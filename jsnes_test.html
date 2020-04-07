@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Time-stamp: "2014-04-24T06:39:54Z" -->
+  
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="robots" content="noindex,nofollow" />
+<meta name="version" content="0.05" />
+<meta name="google-translate-customization"
+      content="3e4b514bb2557048-c9fea4e3549a6ce0-gf618619a4eabd9e4-32"></meta>
+<title>The Site of a Test of JSNES 'A JavaScript NES emulator'</title>
+<style type="text/css">
+#main {display: none;}
+div.flag-anim {
+  width: 100%;
+  text-align: center;
+}
+#flag-anim {
+  border: thick solid grey;
+}
+#flag-anim:hover {
+   border: thick solid yellow;
+}
+
+#flag-anim.green:hover {
+   border: thick solid Firebrick;
+}
+
+#flag-anim.red:hover {
+   border: thick solid blue;
+}
+
+.emulator {
+  padding-top: 1in;
+  padding-bottom: 1in;
+}
+
+table.jsnes-table {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+div#main {
+  margin: 3em;
+  margin-bottom: 3em;
+}
+
+div#moved {
+  margin: 3em;
+  margin-bottom: 3em;
+}
+
+div#memory-tags {
+  margin: 3em;
+  margin-bottom: 3em;
+}
+
+div[lang="en"] p {
+  text-indent: 1.5em;
+}
+
+div[lang="ja"] p {
+  text-indent: 1em;
+}
+
+h2:before {
+  content: "■ ";
+  color: grey;
+}
+
+div[lang="en"] p.no-indent {
+  text-indent: 0;
+}
+
+div[lang="ja"] p.no-indent {
+  text-indent: 0;
+}
+
+div[lang="unknown"] p.memory-tag {
+  text-indent: 0;
+}
+</style>
+</head>
+
+<body lang="en">
+<div id="moved">
+<h1>A Test Page of JSNES FC UI</h1>
+
+<p>This page has moved, because the author has almost achieved the purpose of tests. <span id="sorry">(Sorry.)</span></p>
+<p>Show the <a href="http://jrf.cocolog-nifty.com/archive/nes_semaphore/jrf_semaphore.html">"JRF Flag Semaphore"</a> page.</p>
+
+<div class="flag-anim">
+<img id="flag-anim" src="jrf_anim.gif" alt="GIF ANIMATION HERE" />
+</div>
+
+</div>
+
+
+<div id="main">
+<h1>A Test Page of JSNES FC UI</h1>
+
+<div lang="en">
+<p>How do you know of here? Anyway, welcome. Take easy.</p>
+</div>
+
+<div lang="ja">
+<p>ん、どうやってここを知ったんだ？まぁ、とにかくよく来た。気楽にしてくれ。</p>
+</div>
+
+<div id="emulator" class="emulator"></div>
+
+<div id="more-emulator-holder">
+<input id="more-emulator-button" type="button" value="Another Console" />
+</div>
+
+</div>    
+
+<div id="memory-tags">
+
+<div lang="unknown">
+<p class="memory-tag" id="memory-tag-1">Memory Tag (メモリタグ) No. 1:</p>
+<!--#if expr="$QUERY_STRING_UNESCAPED = /[&?]memtags=([^&?]+)/" -->
+<!--#set var="memtags" value="$1" -->
+  <!--#if expr="$memtags=/^.$/" -->
+  <!--#set var="memtags" value="0$memtags" -->
+  <!--#endif -->
+  <!--#if expr="02<=$memtags" -->
+<p class="memory-tag" id="memory-tag-2">Memory Tag (メモリタグ) No. 2:</p>
+  <!--#endif -->
+  <!--#if expr="03<=$memtags" -->
+<p class="memory-tag" id="memory-tag-3">Memory Tag (メモリタグ) No. 3:</p>
+  <!--#endif -->
+  <!--#if expr="04<=$memtags" -->
+<p class="memory-tag" id="memory-tag-4">Memory Tag (メモリタグ) No. 4:</p>
+  <!--#endif -->
+  <!--#if expr="05<=$memtags" -->
+<p class="memory-tag" id="memory-tag-5">Memory Tag (メモリタグ) No. 5:</p>
+  <!--#endif -->
+  <!--#if expr="06<=$memtags" -->
+<p class="memory-tag" id="memory-tag-6">Memory Tag (メモリタグ) No. 6:</p>
+  <!--#endif -->
+  <!--#if expr="07<=$memtags" -->
+<p class="memory-tag" id="memory-tag-7">Memory Tag (メモリタグ) No. 7:</p>
+  <!--#endif -->
+  <!--#if expr="08<= $memtags" -->
+<p class="memory-tag" id="memory-tag-8">Memory Tag (メモリタグ) No. 8:</p>
+  <!--#endif -->
+  <!--#if expr="09<=$memtags" -->
+<p class="memory-tag" id="memory-tag-9">Memory Tag (メモリタグ) No. 9:</p>
+  <!--#endif -->
+  <!--#if expr="10<=$memtags" -->
+<p class="memory-tag" id="memory-tag-10">Memory Tag (メモリタグ) No. 10:</p>
+  <!--#endif -->
+  <!--#if expr="11<=$memtags" -->
+<p class="memory-tag" id="memory-tag-11">Memory Tag (メモリタグ) No. 11:</p>
+  <!--#endif -->
+  <!--#if expr="12<=$memtags" -->
+<p class="memory-tag" id="memory-tag-12">Memory Tag (メモリタグ) No. 12:</p>
+  <!--#endif -->
+  <!--#if expr="13<=$memtags" -->
+<p class="memory-tag" id="memory-tag-13">Memory Tag (メモリタグ) No. 13:</p>
+  <!--#endif -->
+  <!--#if expr="14<=$memtags" -->
+<p class="memory-tag" id="memory-tag-14">Memory Tag (メモリタグ) No. 14:</p>
+  <!--#endif -->
+  <!--#if expr="15<=$memtags" -->
+<p class="memory-tag" id="memory-tag-15">Memory Tag (メモリタグ) No. 15:</p>
+  <!--#endif -->
+  <!--#if expr="16<=$memtags" -->
+<p class="memory-tag" id="memory-tag-16">Memory Tag (メモリタグ) No. 16:</p>
+  <!--#endif -->
+<!--#endif -->
+</div>
+
+<div id="more-memory-tag-holder">
+<input id="more-memory-tag-button" type="button" value="Another Memory Tag" />
+</div>
+
+<div lang="en">
+<p>Try <a id="translate-en" href="http://www.google.co.jp/translate?langpair=ja%7Cen&amp;hl=ja&amp;ie=UTF8" class="translate translate-en">Google-translation</a> for 'Memory Tag's!</p>
+</div>
+
+<div lang="ja">
+<p>'Memory Tag' を <a id="translate-ja" href="http://www.google.co.jp/translate?langpair=en%7Cja&amp;hl=en&amp;ie=UTF8" class="translate translate-ja">Google 翻訳</a>してみろよ！</p>
+</div>
+
+<div id="google_translate_element"></div>
+</div>    
+
+<script src="jsnes/jquery-1.4.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="jsnes/jquery.dimensions.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="pseudo_dynamicaudio.js" type="text/javascript" charset="utf-8"></script>
+<script src="http://jrf.cocolog-nifty.com/archive/javascript/summoner.js" type="text/javascript" charset="utf-8"></script>
+<script src="jsnes/jsnes.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="jsnes_fc_ui.js" type="text/javascript" charset="utf-8"></script>
+<!--
+    <script src="jsnes/dynamicaudio-min.js" type="text/javascript" charset="utf-8"></script>
+-->
+<!--
+    <script src="jsnes/nes.js" type="text/javascript" charset="utf-8"></script>
+    <script src="jsnes/utils.js" type="text/javascript" charset="utf-8"></script>
+    <script src="jsnes/cpu.js" type="text/javascript" charset="utf-8"></script>
+    <script src="jsnes/keyboard.js" type="text/javascript" charset="utf-8"></script>
+    <script src="jsnes/mappers.js" type="text/javascript" charset="utf-8"></script>
+    <script src="jsnes/papu.js" type="text/javascript" charset="utf-8"></script>
+    <script src="jsnes/ppu.js" type="text/javascript" charset="utf-8"></script>
+    <script src="jsnes/rom.js" type="text/javascript" charset="utf-8"></script>
+    <script src="jsnes/ui.js" type="text/javascript" charset="utf-8"></script>
+-->
+
+<script type="text/javascript" charset="utf-8">
+<!--
+if (! window["bind"]) {
+  window["bind"] = function (f, o) {
+    return function() {return f.apply(o, arguments)};
+  };
+}
+if (! window["parse_error"]) {
+  window["parse_error"] = function (f, o) {
+    return function() {alert("Parse Error."); return null;};
+  };
+}
+
+var ERROR_BEEP = "error_beep.wav";
+var error_beep_wav;
+
+function load_error_beep () {
+  var ctx;
+  if (window["AudioContext"]) {
+    ctx = new AudioContext();
+  } else if (window["webkitAudioContext"]) {
+    ctx = new webkitAudioContext();
+  } else {
+//    NEEDS.push("AudioContext");
+    return;
+  }
+  var req = new XMLHttpRequest();
+  if (typeof req.withCredentials === "undefined") {
+//    NEEDS.push("XHR2");
+    return;
+  }
+  req.open("GET", ERROR_BEEP, true);
+  req.responseType = "arraybuffer";
+  req.onload = bind(function () {
+    this.ctx.decodeAudioData(this.req.response, function (buf) {
+      error_beep_wav = buf;
+    }, function () {});
+  }, {ctx: ctx, req: req});
+  req.send();
+}
+
+function error_beep () {
+  if (! error_beep_wav) {
+    return;
+  }
+  var ctx;
+  if (window["AudioContext"]) {
+    ctx = new AudioContext();
+  } else if (window["webkitAudioContext"]) {
+    ctx = new webkitAudioContext();
+  } else {
+//    NEEDS.push("AudioContext");
+    return;
+  }
+  var s = ctx.createBufferSource();
+  s.buffer = error_beep_wav;
+  s.connect(ctx.destination);
+  s.start(0);
+}
+
+load_error_beep();
+
+document.getElementById('flag-anim').addEventListener('click', revive_fc_ui, false);
+
+var nes;
+
+function revive_fc_ui (e) {
+  if (! location.href.match(/[_\?\&]linker=/)
+      || ! location.href.match(/[_\?\&]linkee=/)) {
+    error_beep();
+    alert("Your URL isn't sealed by 'linker=' (or 'linkee=').");
+    return;
+  }
+  
+  document.getElementById('moved').style.display = "none";
+  document.getElementById('main').style.display = "block";
+
+  nes.ui.loadRomURL("sample1.nes");
+}
+
+if (location.href.match(/[_\?\&]linker=/)) {
+  var ui = $('#emulator').JSNES_FC_UI({
+    'defaultRom': null,
+    'useJRFSemaphore': true,
+    'useNESSemaphore': true,
+    'useSaveDnD': true,
+    'useRomDnD': true,
+    'semaphoreAsm': "http://jrf.cocolog-nifty.com/archive/nes_semaphore/jrf_semaphore.asm",
+    roms: [
+      ["Homebrew", 
+       [
+	 ['Sample1 TEST', 'sample1.nes'],
+	 ['PSG Test', 'psg_test.nes']
+       ]
+      ]
+    ]
+  });
+
+  $(function() {
+    nes = new JSNES({
+      'swfPath': "jsnes/",
+      'ui': ui,
+      'sampleRate': (new DynamicAudio()).sampleRate
+    });
+    document.getElementById('flag-anim').className = "green";
+    var d = document.getElementById('sorry');
+    if (d && d.innerHTML.match(/^\s*\(Sorry\.\)\s*$/)) {
+      document.getElementById('flag-anim').className = "red";
+      nes.ui.getDom('use-rom-dnd').value = false;
+    }
+  });
+
+  $('#more-emulator-button').click(function (e) {
+    var new_id;
+    for (var i = 0; /*i < 16*/; i++) {
+      if (! document.getElementById('emulator-' + i)) {
+	new_id = 'emulator-' + i;
+	break;
+      }
+    }
+    if (! new_id) return;
+    var d = document.createElement('div');
+    d.className = "emulator";
+    d.id = new_id;
+    var p = document.getElementById('more-emulator-holder');
+    p.parentNode.insertBefore(d, p);
+    var ui = $('#' + new_id).JSNES_FC_UI({
+      'defaultRom': null,
+      'useJRFSemaphore': true,
+      'useNESSemaphore': true,
+      'useSaveDnD': true,
+      'useRomDnD': true,
+      'semaphoreAsm': "http://jrf.cocolog-nifty.com/archive/nes_semaphore/jrf_semaphore.asm",
+      roms: [
+	["Homebrew", 
+	 [
+	   ['Sample1 TEST', 'sample1.nes'],
+	   ['PSG Test', 'psg_test.nes']
+	 ]
+	]
+      ]
+    });
+    $(function() {
+      nes = new JSNES({
+	'swfPath': "jsnes/",
+	'ui': ui,
+	'sampleRate': (new DynamicAudio()).sampleRate
+      });
+      
+      var d = document.getElementById('sorry');
+      if (d && d.innerHTML == "(Sorry.)") {
+	nes.ui.getDom('use-rom-dnd').value = false;
+      }
+    });
+  });
+}
+-->
+</script>
+
+<!--[if IE]>
+<script type="text/vbscript" src="jsnes/jsnes-ie-hacks.vbscript"></script>
+<![endif]-->
+
+<!--#if expr="$QUERY_STRING_UNESCAPED = /[&?]inc_lang=([A-Za-z01-9_,]+)/" -->
+<!--#set var="inc_lang" value="$1" -->
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'en,ja,<!--#echo var="inc_lang" -->', layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL, autoDisplay: false, multilanguagePage: true}, 'google_translate_element');
+  fix_google_translate_element_init();
+}
+</script>
+<!--#else -->
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL, autoDisplay: false, multilanguagePage: true}, 'google_translate_element');
+  fix_google_translate_element_init();
+}
+</script>
+<!--#endif -->
+
+<script type="text/javascript">
+<!--
+function fix_google_translate_element (e) {
+  var d = document.getElementById('google_translate_element');
+  d = d.getElementsByTagName('select');
+  if (! d || d.length == 0) return parse_error();
+  d = d[0];
+  if (d.options.length > 1) return;
+  var sel = d;
+  var l = [["English", "en"], ["Japanese", "ja"]];
+  for (var i = 0; i < l.length; i++) {
+    d = document.createElement('option');
+    d.innerHTML = l[i][0];
+    d.value = l[i][1];
+    sel.appendChild(d);
+  }
+  alert("The Google translation may be broken.\n\nThis is a well-known bug, but I don't have enough skill to fix it.\n\nYou can find more information to search about \"Google translator dropdown bug\".\n\nSorry.");
+}
+
+function fix_google_translate_element_init () {
+  var d = document.getElementById('google_translate_element');
+  d = d.getElementsByTagName('select');
+  if (! d || d.length == 0) return parse_error();
+  d = d[0];
+  d.addEventListener('mousedown', fix_google_translate_element, false);
+}
+
+$('#more-memory-tag-button').click(function (e) {
+  var new_id;
+  var i;
+  for (i = 1; /*i < 16*/; i++) {
+    if (! document.getElementById('memory-tag-' + i)) {
+      new_id = 'memory-tag-' + i;
+      break;
+    }
+  }
+  if (! new_id) return;
+  var d = document.createElement('p');
+  d.className = "memory-tag";
+  d.id = new_id;
+  d.innerHTML = "Memory Tag (メモリタグ) No. " + i + ":";
+  var p = document.getElementById('more-memory-tag-holder');
+  p.parentNode.insertBefore(d, p);
+});
+
+if (location.href.match(/(?:[&?]|\%26)memtags(?:=|\%3d)([^&?]+)/i)) {
+  var num = parseInt(RegExp.$1, 10);
+  for (var i = 2; i <= num; i++) {
+    if (document.getElementById('memory-tag-' + i)) {
+      continue;
+    }
+    var d = document.createElement('p');
+    d.className = "memory-tag";
+    d.id = "memory-tag-" + i;
+    d.innerHTML = "Memory Tag (メモリタグ) No. " + i + ":";
+    var p = document.getElementById('more-memory-tag-holder');
+    p.parentNode.insertBefore(d, p);
+  }
+}
+
+function set_url_memtags (url, num) {
+  var s = url;
+  if (s.match(/([\?\&])memtags=[^\?\&]+/)) {
+    var pre = RegExp.leftContext;
+    var post = RegExp.rightContext;
+    if (post != "") {
+      pre = pre + RegExp.$1;
+      post = post.substr(1);
+    }
+    s = pre + post;
+  }
+  s += (s.match(/\?/))? '&' : '?';
+  s += "memtags=" + encodeURIComponent(num);
+  return s;
+}
+
+$('#translate-en').mouseenter(function (e) {
+  var i;
+  for (i = 1; /*i < 16*/; i++) {
+    if (! document.getElementById('memory-tag-' + i)) {
+      break;
+    }
+  }
+  i -= 1;
+  var s = 'http://www.google.co.jp/translate?langpair=en%7Cja&hl=en&ie=UTF8&u='
+    + escape(set_url_memtags(location.href, i));
+  $('#translate-en').attr("href", s);
+});
+
+$('#translate-ja').mouseenter(function (e) {
+  var i;
+  for (i = 1; /*i < 16*/; i++) {
+    if (! document.getElementById('memory-tag-' + i)) {
+      break;
+    }
+  }
+  i -= 1;
+  var s = 'http://www.google.co.jp/translate?langpair=ja%7Cen&hl=ja&ie=UTF8&u='
+    + escape(set_url_memtags(location.href, i));
+  $('#translate-ja').attr("href", s);
+});
+
+-->
+</script>
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>

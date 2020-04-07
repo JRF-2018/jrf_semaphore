@@ -1,0 +1,27 @@
+## read by jrf_semaphore.pl .
+## .set VERSION 0.01 # Time-stamp: <2017-04-28T06:37:15Z>
+
+##
+## Necessary Loading.
+## 
+load-init-file default-init.nginit
+
+##
+## About Conversion.
+##
+## Settings about conversion are loaded afterward by convert-init.nginit .
+#set-tankanji-dic tankanji.txt -e
+#add-skk-dic SKK-JISYO.L -e
+#add-skk-dic bushu-skk-dic.txt -e
+
+##
+## register .nginit for trl like below. (OBSOLETE)
+##
+#trl-init j0heb.nes	simple_hebrew.nginit
+#trl-init j0ja.hw	j0ja.hw.nginit
+trl-init j0ar.presen	arabic-presentation.nginit
+
+find-resource ${HOME}/.trl_init
+.if is-true ${RESULT}
+  load-init-file ${RESULT}
+.endif

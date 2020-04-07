@@ -1,0 +1,18 @@
+## read by jrf_semaphore.pl .
+## .set VERSION 0.01 # Time-stamp: <2017-04-26T18:31:31Z>
+
+##
+## Necessary Definition.
+## 
+set JAPANESE_PUNCT_PERIOD 0
+set JAPANESE_KBKANA 0
+load-init-file japanese-mode-change.nginit
+set ALLOW_MODIFY_CONVERT 1
+set JAPANESE_ROMAN_HINT 1
+
+##
+## User may change below.
+##
+set-tankanji-dic tankanji.txt -e
+add-skk-dic SKK-JISYO.L -e
+add-skk-dic bushu-skk-dic.txt -e

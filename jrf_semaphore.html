@@ -1,0 +1,501 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!-- Time-stamp: "2020-01-23T09:05:28Z" -->
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Language" content="ja,en" />
+
+<title>JRF Flag Semaphore for NES Emulators</title>
+
+<meta name="author" content="JRF" />
+<meta name="version" content="0.15" />
+<meta name="home" content="http://jrf.cocolog-nifty.com/archive/nes_semaphore/" />
+<meta name="archive" content="http://jrf.cocolog-nifty.com/archive/nes_semaphore/jrf_semaphore.tar.gz" />
+<meta name="keywords" content="flag semaphore,手旗,morse code,モールス信号,NES,ファミコン,JavaScript,emu,エミュ" />
+<meta name="description" lang="en" content="A Flag Semaphore Program inspired by a sketch of Monty Python. Implementation for NES Emulators" />
+<meta name="description" lang="ja" content="モンティ・パイソンにヒントを得た手旗信号プログラム。ファミコンエミュレータ用実装。" />
+
+<style type="text/css">
+div.main {
+  margin: 3em;
+  margin-bottom: 3em;
+}
+div[lang="en"] p {
+  text-indent: 1.5em;
+}
+div[lang="ja"] p {
+  text-indent: 1em;
+}
+h2:before {
+  content: "■ ";
+  color: grey;
+}
+div[lang="en"] p.no-indent {
+  text-indent: 0;
+}
+div[lang="ja"] p.no-indent {
+  text-indent: 0;
+}
+span.subtitle {
+  font-size: smaller;
+}
+span.error-code {
+  color: red;
+}
+
+div.emulator {
+  margin-left: 0.5in;
+}
+
+div#more-emulator-holder {
+  margin-left: 0.5in;
+}
+
+table.flag-code {
+  margin-left: 0.5in;
+  text-align: center;
+  border-collapse: collapse;
+}
+
+table.flag-code th.lr {
+  border-right: thin solid black;
+  border-bottom: thin solid black;
+}
+
+table.flag-code thead th {
+  border-bottom: thin solid black;
+}
+
+table.flag-code tbody th {
+  border-right: thin solid black;
+}
+table.flag-code th, table.flag-code td {
+  padding: 0.3em;
+}
+
+table.command-result {
+  margin-left: 0.5in;
+}
+
+table.command-result td.arrow {
+  font-size: xx-large;
+  color: red;
+  text-align: center;
+  padding-top: 0;
+  padding-bottom: 0.1in;
+}
+table.command-result td.text-image {
+  text-align: center;
+}
+
+table.underbar-table {
+  margin-left: 0.5in;
+  text-align: left;
+  border-collapse: collapse;
+}
+
+table.underbar-table td {
+  padding: 0.3em;
+}
+
+div.picture {
+  margin: 0.5in;
+}
+
+div.picture td {
+  padding: 0.3em;
+}
+
+span.small {
+  font-size: smaller;
+}
+ul li {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+</style>
+
+</head>
+
+<body>
+<div class="main">
+
+<h1 lang="en">Hi, Their !<br/>I made unbelievably profound programs of Flag Semaphore. Show THEM, NOW.<br /><span class="subtitle">JRF Flag Semaphore for NES Emulators, inspired by Monty Python.</span></h1>
+<h1 lang="ja">よう、やっとるか！<br/>すげぇ手旗信号のプログラム作ったから、まぁ、見てってくれや。<br /><span class="subtitle">JRF Flag Semaphore - ファミコン(エミュ)用 (モンティ・パイソンのコントをヒントに)。</span></h1>
+
+<div id="jrf-semaphore-logo" class="picture">
+<table>
+<tr><td><img src="jrf.png" alt="JRF LOGO IMAGE SHOULD BE HERE." /></td>
+<td>
+<p lang="en">"JRF" by the Flag Semaphore.</p>
+<p lang="ja">この手旗信号による "JRF"。</p>
+</td>
+</tr>
+</table>
+</div>
+
+<div lang="en">
+<h2>Protocol</h2>
+<p class="no-indent">On this protocol of flag semaphore, the flagger hands one set of two flags each in different colors.  Any language (including Japanese) must transfer the English flag semaphore but expecting transliteration.  The following table shows flag codes on the protocol.  The hand positions is numbered 0-7, 0 towards down, 2 towards horizontally outer, 4 towards up and 7 towards like to hide something:</p>
+</div>
+
+<div lang="ja">
+<h2>プロトコル (手順規定)</h2>
+<p class="no-indent">この手旗プロトコルでは、旗持ちは一組二振りの色違いの旗を持つ。でも、だからと言って、日本語カナのコーディングは用いないのがミソだ。(日本語含む)どんな言語でも、英語版の信号しか使わず、その後にローマ字カナ変換のような "Transliteration" (逐字訳) をすりゃいいと考える。次の表は手旗コード。手の位置を 0 から 7 で付番する。0 が下向き、2 が水平に外向き、4 が上、7 で大事なところに向けるわけだ。</p>
+</div>
+<div class="flag-code-div" lang="en">
+<table class="flag-code">
+<thead>
+<tr><th class="lr">L&#x5c;R</th><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th></tr>
+</thead>
+<tbody>
+<tr><th>0</th>
+<td>$00</td><td>'g'</td><td>'f'</td><td>'e'</td><td>'.'</td><td><span class='error-code'>err</span></td><td>'_'</td><td>$03</td></tr>
+<tr><th>1</th>
+<td>'a'</td><td>'n'</td><td>'m'</td><td>'l'</td><td>'k'</td><td>'i'</td><td>'H'</td><td><span class='error-code'>err</span></td></tr>
+<tr><th>2</th>
+<td>'b'</td><td>'s'</td><td>'r'</td><td>'q'</td><td>'p'</td><td>'o'</td><td><span class='error-code'>err</span></td><td>'h'</td></tr>
+<tr><th>3</th>
+<td>'c'</td><td>$08</td><td>'y'</td><td>'u'</td><td>'t'</td><td><span class='error-code'>err</span></td><td>'O'</td><td>'I'</td></tr>
+<tr><th>4</th>
+<td>'d'</td><td>'v'</td><td>'j'</td><td>'$'</td><td><span class='error-code'>err</span></td><td><span class='error-code'>err</span></td><td><span class='error-code'>err</span></td><td><span class='error-code'>err</span></td></tr>
+<tr><th>5</th>
+<td><span class='error-code'>err</span></td><td>'x'</td><td>'w'</td><td><span class='error-code'>err</span></td><td><span class='error-code'>err</span></td><td><span class='error-code'>err</span></td><td><span class='error-code'>err</span></td><td><span class='error-code'>err</span></td></tr>
+<tr><th>6</th>
+<td>'&amp;'</td><td><span class='error-code'>err</span></td><td><span class='error-code'>err</span></td><td>'W'</td><td><span class='error-code'>err</span></td><td><span class='error-code'>err</span></td><td><span class='error-code'>err</span></td><td>'Z'</td></tr>
+<tr><th>7</th>
+<td>$03</td><td><span class='error-code'>err</span></td><td>'z'</td><td>'X'</td><td><span class='error-code'>err</span></td><td><span class='error-code'>err</span></td><td><span class='error-code'>err</span></td><td>' '</td></tr>
+</tbody>
+</table>
+</div>
+
+<div lang="en">
+<p>This protocol specially implements '.'(period) and '_'(underbar) as
+"Morse characters".  A dot of Morse code is '.' → $00.  $00 is the
+null character which gives a "delimiter" between characters and
+sometimes a rest for flaggers.  A dash '-' of Morse code is '.' → '_'.
+$03 is another $00 but can give a boundary of characters specially for
+Morse Code.  Alphabets are lower case in default.  However, '_' →
+Letter gives upper case.  '_' → '.' gives '.'(period). '_' → ' '
+(space) gives ',' (comma).  In the table above, upper case letters
+mean another way of poses, which are different from the original ones
+in <a href="http://en.wikipedia.org/wiki/Flag_semaphore">Wikipedia</a>
+but similar.  And they also give lower case instead of upper case.</p>
+
+<p>To enter numeral mode, signal '$' in the table.  In numeral mode,
+each character changes its meaning: 'a' → '1', 'b' → '2', 'c' →
+'3', 'd' → '4', 'e' → '5', 'f' → '6', 'g' → '7', 'h' → '8', 'i' →
+'9' and 'k' → '0'.  To leave numeral mode, signal 'j'.  In numeral
+mode of this protocol, normally 3 octets give one ascii code.
+However, '_' → Number gives that number.<br/>  If the first octet is
+4-9, two numbers can give one ascii code,<br/> 8: if the next is 0, makes
+1 → 0 (→ 0), otherwise makes 1 → 3, and<br/> 9: if the next is 0,
+makes 1 → 4 (→ 0), otherwise makes 1 → 7.</p>
+
+<p>'&amp;' is similar to '$', but it automatically ends "numeral mode" by one character (of ASCII code) without 'j' i.e. letter mode sign.</p>
+
+<p>You can input $20-$7F in two codes at most excluding of control codes.  The rest $08 in the table gives a "cancel"ling.</p>
+</div>
+
+<div lang="ja">
+<p>本プロトコルでは特殊な方法として、「モールス符号」の '.' と '_' を用意。モールス短音は、'.' → $00。$00 は NUL キャラクタで、文字区切りや旗持ちにちょっとした間を与える。モールス長音は '.' → '_' で '-'。モールス符号の文字区切りは特別に表中 $03 のものを使うとよい。アルファベットは基本、小文字とし、大文字は '_' → 文字 で指定。また、'_' → '.' で '.'、'_' → ' ' で ',' とする。上表の大文字は <a href="http://en.wikipedia.org/wiki/Flag_semaphore">Wikipedia</a> の方法と違うが、似ているのでそれでも入力でき、その入力は表中の大文字ではなく小文字となる。</p>
+
+<p>数字モードに入るには、表中の '$' の信号を出す。数字モードでは各文字の意味が変わり: 'a' → '1', 'b' → '2', 'c' → '3', 'd' → '4', 'e' → '5', 'f' → '6', 'g' → '7', 'h' → '8', 'i' → '9', 'k' → '0' になる。数字モードから出るには、'j' の信号を出す。数字モードのときは、通常は 3 つの数字で、8進数3ケタの ascii コード指定。ただし、'_' → 数字 で、その数字が出る。<br/>
+コード指定の数字の最初が 4-9 なら、2つの数字で入力可、<br/>
+8 は次が 0 なら 1 → 0 (→ 0) に、そうでないなら 1 → 3 に同じと解釈、<br/>
+9 は次が 0 なら 1 → 4 (→ 0) に、そうでないなら 1 → 7 に同じと解釈。</p>
+
+<p>'&amp;' は '$' とほとんど同じだが、(ASCII コードを)一文字分入力したところで自動的に数字モードが終る。モード終了のために 'j' を送る必要はないし送ってはならない。</p>
+
+<p>制御符号を除けば、$20 から $7F までは最大二つの符号で入力可能。表で残った $08 は「キャンセル」。</p>
+</div>
+
+<div lang="en">
+<h2>Morse Code over Flag Semaphore</h2>
+
+<p class="no-indent">With Morse code, like flag semaphore above, as
+for international characters, you should expect transliteration.</p>
+
+<p>Letters are lower case in default.  '_' + Letters give upper case.
+'_' + Symbols give other symbols useful for transliteration: 
+</p>
+</div>
+
+<div lang="ja">
+<h2>手旗によるモールス信号</h2>
+
+<p class="no-indent">モールス信号を使うときも、上の手旗信号と同じく、特殊な欧文文字や日本語カナなど英語以外の文字は、Transliteration を使うのが前提となる。</p>
+<p>ここでも、英文字は小文字がデフォルトで、'_' + 文字だと大文字になる。'_' + 記号は、Transliteration に都合がよい下のような記号になる。：</p>
+</div>
+
+<div lang="en">
+<table class="underbar-table">
+<tr><td>'_' + '_'</td><td>→ '_',</td></tr>
+<tr><td>'_' + '&amp;'</td><td>→ '&amp;',</td></tr>
+<tr><td>'_' + '$'</td><td>→ '$',</td></tr>
+<tr><td>'_' + &quot; (quot.)</td><td>→ '^',</td></tr>
+<tr><td>'_' + ' (apos.)</td><td>→ '`' (back quote),</td></tr>
+<tr><td>'_' + '-'</td><td>→ '~',</td></tr>
+<tr><td>'_' + '/'</td><td>→ $5C (backslash '&#x5C;').</td></tr>
+</table>
+</div>
+
+<div lang="en">
+<p>And more, in the jrf_semaphore, you can input an ascii character
+code by '&amp;' + bits('·' = 0, '–' =1)-word.  If 8bits-word is
+greater than $7F, it is interpreted as UTF-8.  So, unicode of
+$80-$FF must also be coded by UTF-8 (or expect transliteraton). (Numbers
+like $5C are hex codes.)</p>
+
+<p>'$' of Morse Code is not implemented like Flag Semaphore in which
+numeral mode continues til an explicit end.  Do you want to click UTF-8
+binary codes by hand?</p>
+</div>
+
+<div lang="ja">
+<p>jrf_semaphore においては、'&amp;' + ビット列('·' = 0, '–' =1)で、ASCII コードを入力できるとする。ビット列の長さは 8 ビットまでで、UTF-8 コードと解釈する。カタカナ入力も UTF-8 で可能ではあるが、相手が文字を理解するとは限らない。($5C などの数字は 16 進数コード。)</p>
+
+<p>モールス信号における '$' は、手旗のように数字モードが明示的な終了がない限り続くような実装を用意していない。それとも UTF-8 バイナリを手で打ちたいかい？</p>
+</div>
+
+<div lang="en">
+<h2>Try It !</h2>
+</div>
+<div lang="ja">
+<h2>やってみよう！</h2>
+</div>
+
+<div id="emulator" class="emulator" lang="en"><span class="error-code">[PROGRAMMED UI SHOULD BE HERE.]</span></div>
+
+<div id="more-emulator-holder" lang="en">
+<input id="more-emulator-button" type="button" value="Another Console" />
+</div>
+
+<div lang="en">
+<p>The program runs with <a href="http://fir.sh/projects/jsnes/">JSNES</a> which is a NES emulator written in JavaScript.  I create the "ROM"-data for NES with the assebler <a href="http://www.magicengine.com/mkit/">NESASM</a> and neat UI in an hommage of Japanese NES of "FamiCon".</p>
+
+<p>I tested on Firefox and Google Chrome.  This program uses progressive part of JavaScript, your browser possibly doesn't work or works but very slowly on lower-spec. machines.  (Sorry.)</p>
+
+<p>Direction buttons control flags.  Other buttons are commands. Try and find.</p>
+
+<p>The program is archived with sources below. Links on SugarSync may show ads.</p>
+</div>
+<div lang="ja">
+<p>このプログラムは <a href="http://fir.sh/projects/jsnes/">JSNES</a> 上で動いている。JSNES は JavaScript で書かれたファミコンエミュレータの一つである。私は、このファミコン用「ROM」データをアセンブラ <a href="http://www.magicengine.com/mkit/">NESASM</a> で、またファミコンをオマージュしたちょっとした UI を作った。</p>
+
+<p>Firefox と Google Chrome 上で動作確認している。先進的な JavaScript の機能を使ってるので、ひょっとして今見てるブラウザでは動いてないかもしれない。動いても低スペックマシンだととても遅いだろう。(すまん。)</p>
+
+<p>方向ボタンで旗が動く。他のボタンは「コマンド」。いろいろ試して発見して欲しい。</p>
+
+<p>プログラムはソースと共に以下んとこにアーカイブしてある。SugarSync 上のリンクは Ad を出すかも。</p>
+</div>
+
+<div lang="en">
+<ul>
+<li><a href="http://jrf.cocolog-nifty.com/archive/nes_semaphore/jrf_semaphore.html">jrf_semaphore.html</a> (Net location of this HTML).</li>
+<li><a href="http://jrf.cocolog-nifty.com/archive/nes_semaphore/jrf_semaphore.tar.gz">jrf_semaphore.tar.gz</a> (TGZ),</li>
+<li><a href="https://www.sugarsync.com/pf/D252372_79_7918491888">jrf_semaphore.tar.gz</a> on SugarSync (TGZ),</li>
+<li><a href="http://jrf.cocolog-nifty.com/archive/nes_semaphore/jrf_semaphore.zip">jrf_semaphore.zip</a> (ZIP),</li>
+<li><a href="https://www.sugarsync.com/pf/D252372_79_6958857883">jrf_semaphore.zip</a> on SugarSync (ZIP),</li>
+<li><a href="http://jrf.cocolog-nifty.com/archive/nes_semaphore/jrf_semaphore.shar">jrf_semaphore.shar</a> (SHell ARchive).</li>
+<li><a href="https://www.sugarsync.com/pf/D252372_79_6958857175">jrf_semaphore.shar</a> on SugarSync (SHell ARchive),</li>
+<li><a href="http://jrf.cocolog-nifty.com/archive/collabo/gnu/jsnes-master-20140213.zip">jsnes-master-20140213.zip</a>. My GitHub copy of JSNES sources.</li>
+<li><a href="https://www.sugarsync.com/pf/D252372_79_6958852761">jsnes-master-20140213.zip</a> on SugarSync.</li>
+<li><span lang="en">Update Information is on my blog (in Japanese).  </span><span lang="ja">アップデート情報はブログに。</span><br/>→ 《<a href="http://jrf.cocolog-nifty.com/software/2014/03/post-1.html" lang="ja">JRF のソフトウェア Tips：JRF Flag Semaphore for NES Emulator を作った</a>》。</li>
+</ul>
+<li><span lang="en">Currently, I cannot update files on Cocolog.  You must download from SugarSync.</span>  <span lang="ja">現在、ココログのファイルをアップデートできなくされている。SugarSync からダウンロードして欲しい。</span></li>
+</ul>
+</div>
+
+<div lang="en">
+<h2>Transliteration</h2>
+<p class="no-indent">The above archives also have 'jrf_sempahore.pl'.  That is a Perl script which can process transliteration or something.</p>
+
+<p>Currently, 'jrf_semaphore.pl' supports transliteration only of very simple Hebrew named in 'j0heb.nes' and Japanese half-width Kana named in 'j0ja.hw'.</p> 
+<p>Documentation has not been completed at all, yet.  Now, here is a simple example below, which transliterates "br'syt" into Hebrew characters and encode them to flag codes with (un)transliteraton and decode them and generate a GIF image of text.</p>
+</div>
+
+<div lang="ja">
+<h2>Transliteration</h2>
+<p class="no-indent">上のアーカイブには 'jrf_sempahore.pl' も含まれている。この Perl スクリプトで Transliteration とかいろいろできる。</p>
+
+<p>が、今のところ、'jrf_semaphore.pl' は日本語カナとかなりシンプルなヘブライ語のみサポートしている。日本語半角カナは 'j0ja.hw' という名で、ヘブライ語は 'j0heb.nes' という名で指定する。</p> 
+
+<p>ドキュメントはまったく書けてない。今は、下の簡単な例で許して欲しい。これは、"br'syt" を Transliteration してヘブライ文字にし、その後、旗番号に (逆)Transliteration しながらコード化して、さらに今度は、それを逆に文字に戻してそのテキストを GIF イメージにしている。</p>
+</div>
+
+<div lang="en">
+<table class="command-result">
+<tr><td>
+<pre class="source shell">
+$ echo -n br\'syt | perl jrf_semaphore.pl -t -c -T j0heb.nes \
+    | perl jrf_semaphore.pl -c -T j0heb.nes \
+    | perl jrf_semaphore.pl -u --text-gif > test.gif
+</pre>
+</td></tr>
+<tr><td class="arrow">↓</td></tr>
+<tr><td class="text-image"><img src="genesis-1_1_1.gif" alt="br\'syt" /></td></tr>
+</table>
+</div>
+
+<div lang="en">
+<p>The next example encodes the text "This is a test" to flag codes
+and outputs them as a GIF animation.</p>
+</div>
+<div lang="ja">
+<p>次の例では、"This is a test" を旗番号にコード化して、それを GIF アニメーションとして出力している。</p>
+</div>
+
+<div lang="en">
+<table class="command-result">
+<tr><td>
+<pre class="source shell">
+$ echo -n "This is a test." \
+    | perl jrf_semaphore.pl -c --flag-gif -o test2.gif
+</pre>
+</td></tr>
+<tr><td class="arrow">↓</td></tr>
+<tr><td class="text-image"><img src="flag_test.gif" alt="jrf c This is a test." /></td></tr>
+</table>
+</div>
+
+<div lang="en">
+<p>If you have copied tankanji.txt, tankanji.txt.sdb.dir,
+taknanji.txt.sdb.pag, SKK-JISYO.L, SKK-JISYO.L.sdb.dir,
+SKK-JISYO.L.sdb.pag, bushu-skk-dic.txt, bushu-skk-dic.txt.sdb.dir and
+bushu-skk-dic.txt.sdb.pag from the
+working <a href="http://jrf.cocolog-nifty.com/software/2015/10/post.html">quail-naggy</a>
+directory, you can use Japanese conversion via -T naggy like
+below.</p>
+</div>
+
+<div lang="ja">
+<p>動作している <a href="http://jrf.cocolog-nifty.com/software/2015/10/post.html">quail-naggy</a> ディレクトリから tankanji.txt, tankanji.txt.sdb.dir, taknanji.txt.sdb.pag, SKK-JISYO.L, SKK-JISYO.L.sdb.dir, SKK-JISYO.L.sdb.pag, bushu-skk-dic.txt, bushu-skk-dic.txt.sdb.dir, bushu-skk-dic.txt.sdb.pag をコピーしていれば、次のように -T naggy で日本語変換が使える。</p>
+</div>
+
+<div lang="en">
+<table class="command-result">
+<tr><td>
+<pre class="source shell">
+$ echo -n "koreha,h. English,a."\
+    "majirino,h.nihongo,j.no,h.tesuto,k.desu.,h." \
+    "[,h.atui,j,,.natu,J,m..],h." \
+    | perl jrf_semaphore.pl -t -c -T naggy
+</pre>
+</td></tr>
+<tr><td class="arrow">↓</td></tr>
+<tr><td class="text-image"><span lang="ja">これは English まじりの日本語のテストです。 「暑い夏。」</span></td></tr>
+</table>
+<p class="no-indent">It means "This is a test of Japanese mixed with English. 'Hot Summer.'"</p>
+</div>
+
+<div lang="en">
+<h2>License</h2>
+<p class="no-indent">The author is a Japanese.</p>
+
+<p>I intended this program to be public-domain, but you can treat
+this program under the (new) BSD-License or under the Artistic
+License, if it is convenient for you.</p>
+
+<p>Within three months after the release of this program, I
+especially admit responsibility of efforts for rational requests
+of correction to this program.</p>
+
+<p>I often have bouts of schizophrenia, but I believe that my
+intention is legitimately fulfilled.</p>
+</div>
+
+<div class="footer" lang="en">
+<hr/>
+<p class="no-indent">2014-03, 2017 &ndash; JRF &lt;<a href="http://jrf.cocolog-nifty.com/software">http://jrf.cocolog-nifty.com/software</a>&gt; (Sorry, Japanese only.)</p>
+
+<p class="no-indent">This page was written in rude Japanese/UTF-8 and in broken English.</p>
+</div>
+
+</div>
+
+<script src="jsnes/jquery-1.4.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="pseudo_dynamicaudio.js" type="text/javascript" charset="utf-8"></script>
+<script src="http://jrf.cocolog-nifty.com/archive/javascript/summoner.js" type="text/javascript" charset="utf-8"></script>
+<script src="jsnes/jsnes.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="jsnes_fc_ui.js" type="text/javascript" charset="utf-8"></script>
+
+<script type="text/javascript" charset="utf-8">
+<!--
+var nes;
+var ui = $('#emulator').JSNES_FC_UI({
+  'defaultRom': 'jrf_semaphore.nes',
+  'useJRFSemaphore': true,
+  'useNESSemaphore': true,
+  'useSaveDnD': true,
+  'useRomDnD': location.href.match(/^file\:/),
+  'roms': (location.href.match(/^file\:/))? [
+    ["Homebrew", 
+     [
+       ['Flag Semaphore', 'jrf_semaphore.nes'],
+       ['PSG Test', 'psg_test.nes']
+     ]
+    ]
+  ] : null
+});
+
+$(function() {
+  nes = new JSNES({
+    'swfPath': "jsnes/",
+    'ui': ui,
+    'sampleRate': (new DynamicAudio()).sampleRate
+  });
+});
+
+$('#more-emulator-button').click(function (e) {
+  var new_id;
+  for (var i = 0; /*i < 16*/; i++) {
+    if (! document.getElementById('emulator-' + i)) {
+      new_id = 'emulator-' + i;
+      break;
+    }
+  }
+  if (! new_id) return;
+  var d = document.createElement('div');
+  d.className = "emulator";
+  d.id = new_id;
+  d.lang = "en";
+  var p = document.getElementById('more-emulator-holder');
+  p.parentNode.insertBefore(d, p);
+  var nes;
+  var ui = $('#' + new_id).JSNES_FC_UI({
+    'defaultRom': 'jrf_semaphore.nes',
+    'useJRFSemaphore': true,
+    'useNESSemaphore': true,
+    'useSaveDnD': true,
+    'useRomDnD': location.href.match(/^file\:/),
+    'roms': (location.href.match(/^file\:/))? [
+      ["Homebrew", 
+       [
+	 ['Flag Semaphore', 'jrf_semaphore.nes'],
+	 ['PSG Test', 'psg_test.nes']
+       ]
+      ]
+    ] : null
+  });
+
+  $(function() {
+    nes = new JSNES({
+      'swfPath': "jsnes/",
+      'ui': ui,
+      'sampleRate': (new DynamicAudio()).sampleRate
+    });
+  });
+});
+-->
+</script>
+
+<!--[if IE]>
+<script type="text/vbscript" src="jsnes/jsnes-ie-hacks.vbscript"></script>
+<![endif]-->
+
+</body>
+</html>

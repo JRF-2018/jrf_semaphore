@@ -1,0 +1,10 @@
+Retrieve JSNES (from GitHub), make(or grunt) it, and put jsnes.min.js
+with jquery-1.4.2.min.js in its lib into this directory.  My page on
+the Net also uses the same jsnes.min.js I made (i.e. grunted).
+
+JSNES を(GitHub から)取ってきて make(というか grunt)し、できた
+jsnes.min.js をその lib にある jquery-1.4.2.min.js と共にこのディレクト
+リに置くこと。ネット上の私のページでも同じく make (grunt) した
+jsnes.min.js を使っている。
+
+(This file was written in Japanese/UTF8 and in Japanese English.)
