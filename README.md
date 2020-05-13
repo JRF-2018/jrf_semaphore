@@ -1,6 +1,6 @@
 # JRF Flag Semaphore
 
-<!-- Time-stamp: "2020-05-13T11:24:09Z" -->
+<!-- Time-stamp: "2020-05-13T19:07:55Z" -->
 
 Hi, Their !
 
@@ -8,7 +8,7 @@ I made unbelievably profound programs of Flag Semaphore. Show THEM, NOW.
 
 JRF Flag Semaphore for NES Emulators, inspired by Monty Python.
 
-Read [HERE](http://jrf.cocolog-nifty.com/mylib/jrf_semaphore.html)! You can also read [HERE](http://jrf.cocolog-nifty.com/software/2014/03/post-1.html) in Japanese.
+Read [HERE](http://jrockford.s1010.xrea.com/archive/nes_semaphore/jrf_semaphore.html)! You can also read [HERE](http://jrf.cocolog-nifty.com/software/2014/03/post-1.html) in Japanese.
 
 よう、やっとるか！
 
@@ -16,7 +16,7 @@ Read [HERE](http://jrf.cocolog-nifty.com/mylib/jrf_semaphore.html)! You can also
 
 JRF Flag Semaphore - ファミコン(エミュ)用 (モンティ・パイソンのコントをヒントに)。
 
-[ここ](http://jrf.cocolog-nifty.com/mylib/jrf_semaphore.html) と [ここ](http://jrf.cocolog-nifty.com/software/2014/03/post-1.html) を読んどくれ！
+[ここ](http://jrockford.s1010.xrea.com/archive/nes_semaphore/jrf_semaphore.html) と [ここ](http://jrf.cocolog-nifty.com/software/2014/03/post-1.html) を読んどくれ！
 
 
 ## GitHub 登録までの略歴
