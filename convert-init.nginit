@@ -1,5 +1,5 @@
 ## read by jrf_semaphore.pl .
-## .set VERSION 0.01 # Time-stamp: <2017-04-26T18:31:31Z>
+## .set VERSION 0.17 # Time-stamp: <2020-11-30T19:35:39Z>
 
 ##
 ## Necessary Definition.
@@ -16,3 +16,4 @@ set JAPANESE_ROMAN_HINT 1
 set-tankanji-dic tankanji.txt -e
 add-skk-dic SKK-JISYO.L -e
 add-skk-dic bushu-skk-dic.txt -e
+add-skk-dic emoji-skk-dic.txt -u

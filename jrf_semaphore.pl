@@ -1,10 +1,10 @@
 #!/usr/bin/perl
 #require 5.008_003;
 { package main;
-  my $TS = 'Time-stamp: <2020-01-24T03:00:15Z>';
+  my $TS = 'Time-stamp: <2020-11-30T18:34:08Z>';
   $TS =~ s/Time-stamp\:\s+<(.*)>/$1/;
   my $AUTHOR = "JRF (http://jrf.cocolog-nifty.com/)";
-  our $VERSION = "0.16; jrf_semaphore.pl; last modified at $TS; by $AUTHOR";
+  our $VERSION = "0.17; jrf_semaphore.pl; last modified at $TS; by $AUTHOR";
   our $DEBUG = 1;
 }
 
